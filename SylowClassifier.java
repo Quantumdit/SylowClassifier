@@ -4,6 +4,6 @@
 
 public class SylowClassifier{
 	public static void main(String arg[]){
-		PrimeFactorization pf = new PrimeFactorization (264);	//test	
+		PrimeFactorization pf = new PrimeFactorization (988624);	//DEBUG
 	}
 }
