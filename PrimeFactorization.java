@@ -1,13 +1,13 @@
 import java.util.*;
 
 public class PrimeFactorization{
-	private final ArrayList<IntPair> factorization;						//First number is a prime, second number the associated exponent
+	private final IntPair[] factorization;						//First number is a prime, second number the associated exponent
 	
 	public PrimeFactorization(int number)
 	{
-		ArrayList<IntPair> newFactorization = new ArrayList<IntPair>();
-		ArrayList<Integer> primes = new ArrayList<Integer>();			//List of primes already discovered
-		int possiblePrime = 2;										//Start off with two
+		ArrayList<Integer> primes = new ArrayList<Integer>();				//List of primes already discovered
+		ArrayList<IntPair> factorizationList = new ArrayList<IntPair>();	//List of prime factors with their exponents already discovered
+		int possiblePrime = 2;												//We'll start with two, the first prime number
 		while (number != 1)
 		{
 			ListIterator iterator = primes.listIterator();
@@ -28,13 +28,13 @@ public class PrimeFactorization{
 				{
 					System.out.println(possiblePrime);		//DEBUG
 					System.out.println(timesDivisible);		//DEBUG
-					newFactorization.add(new IntPair(possiblePrime, timesDivisible));
+					factorizationList.add(new IntPair(possiblePrime, timesDivisible));
 					number = timesDivisiblePair.getSecond();								//Set number to be the remainder after the division
 				}
 			}
 			possiblePrime++;
 		}
-		factorization = newFactorization;
+		factorization = (IntPair[])factorizationList.toArray(new IntPair[1]);				//Set factorization as an array (rather than an ArrayList)
 	}
 	
 	//Returns the number of times that divisor divides number, along with the remainder
@@ -49,7 +49,7 @@ public class PrimeFactorization{
 		return new IntPair(counter,number);
 	}
 	
-	public ArrayList<IntPair> getFactorization()
+	public IntPair[] getFactorization()
 	{
 		return factorization;
 	}
