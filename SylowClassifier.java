@@ -4,6 +4,8 @@
 
 public class SylowClassifier{
 	public static void main(String arg[]){
-		PrimeFactorization pf = new PrimeFactorization (988624);	//DEBUG
+		LongPair[] pf = MathHandler.PrimeFactorization(988624);	//DEBUG
+		String report = Prover.firstSylowTheorem(pf);	//DEBUG
+		System.out.println(report);			//DEBUG
 	}
 }
